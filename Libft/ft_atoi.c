@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momogash <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/30 13:54:21 by momogash          #+#    #+#             */
-/*   Updated: 2019/06/30 13:54:48 by momogash         ###   ########.fr       */
+/*   Created: 2019/05/31 16:14:36 by momogash          #+#    #+#             */
+/*   Updated: 2019/06/20 12:09:58 by momogash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <fcntl.h>
+int		ft_atoi(const char *str)
+{
+	long	i;
+	int		num;
 
-# define BUFF_SIZE 32
-# define MAX_FD 1024
-# define RET(ret) ret > 0 ? 1 : 0
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+	i = 0;
+	while ((*str >= '\t' && *str <= '\r') || (*str == 32))
+		str++;
+	if (*str == '-')
+		num = -1;
+	else
+		num = 1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str && ft_isdigit(*str))
+		i = (i * 10) + (*str++ - '0');
+	if (i < 0 && num == 1)
+		return (-1);
+	if (i < 0)
+		return (0);
+	return (i * num);
+}

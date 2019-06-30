@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momogash <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/30 13:54:21 by momogash          #+#    #+#             */
-/*   Updated: 2019/06/30 13:54:48 by momogash         ###   ########.fr       */
+/*   Created: 2019/05/31 14:23:49 by momogash          #+#    #+#             */
+/*   Updated: 2019/06/21 15:14:40 by momogash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include "libft/libft.h"
-# include <fcntl.h>
+char		*ft_strstr(const char *s1, const char *s2)
+{
+	unsigned int	i;
+	unsigned int	j;
 
-# define BUFF_SIZE 32
-# define MAX_FD 1024
-# define RET(ret) ret > 0 ? 1 : 0
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+	i = 0;
+	if (s1[0] == '\0' && s2[0] == '\0')
+		return ((char *)s1);
+	while (s1[i] != '\0')
+	{
+		j = 0;
+		while (s2[j] != '\0' && s1[i + j] == s2[j])
+			j++;
+		if (s2[j] == '\0')
+			return ((char *)s1 + i);
+		i++;
+	}
+	return (NULL);
+}
