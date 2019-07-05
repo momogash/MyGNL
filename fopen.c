@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   fopen.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momogash <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/04 08:27:23 by momogash          #+#    #+#             */
-/*   Updated: 2019/07/04 09:31:28 by momogash         ###   ########.fr       */
+/*   Created: 2019/07/03 17:14:06 by momogash          #+#    #+#             */
+/*   Updated: 2019/07/03 18:15:26 by momogash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>
 
-# include "Libft/libft.h"
-# include <fcntl.h>
+int main(void)
+{
+	int fp;
+	char ch;
+	//char filename[40];
+	char mode[4];
 
-# define BUFF_SIZE 32
-# define MAX_FD 1024
-# define RET(ret) ret > 0 ? 1 : 0
-
-int		get_next_line(int const fd, char **line);
-
-#endif
+	while (1)
+	{
+		fp = open("author",w)
+	}
+}
