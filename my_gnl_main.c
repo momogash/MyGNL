@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   maingnl.c                                          :+:      :+:    :+:   */
+/*   my_gnl_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momogash <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/04 07:26:41 by momogash          #+#    #+#             */
-/*   Updated: 2019/08/14 17:18:00 by momogash         ###   ########.fr       */
+/*   Created: 2019/08/14 16:17:16 by momogash          #+#    #+#             */
+/*   Updated: 2019/08/14 17:17:43 by momogash         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include <fcntl.h>
 #include <stdio.h>
 
 int main(int ac, char *av[])
 {
 	int fd;
-	char *line;
 
-	int ac = 0;
+	ac = 1;
 
 	fd = open(av[1],O_RDONLY);
-	while	(get_next_line(fd, &line) == 1)
-	{
-		printf("%s\n", line);
-		if (line)
-			ft_strdel(&line);
-	}
-	if	(line)
-		free(line);
-	close(fd);
-	return (0);
+	if (fd < 0)
+		printf("error reading file\n");
+	printf("fd = %d\n", fd);
+
+	return(0);
 }
